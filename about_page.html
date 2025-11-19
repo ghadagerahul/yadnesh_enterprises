@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Yadnesh Enterprises</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Hero Section */
+        .hero-about {
+            position: relative;
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .architectural-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,255,255,.1) 50px, rgba(255,255,255,.1) 51px),
+                repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,.1) 50px, rgba(255,255,255,.1) 51px),
+                repeating-linear-gradient(45deg, transparent, transparent 70px, rgba(255,87,34,.15) 70px, rgba(255,87,34,.15) 72px);
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .hero-content-about {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 30px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .company-intro {
+            font-size: 20px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.95);
+            max-width: 900px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 40px;
+            background: #f8f9fa;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #FF5722, #FF7043);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(255, 87, 34, 0.15);
+            border-color: #FF5722;
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #FF5722, #FF7043);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+        }
+
+        .stat-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Mission Vision Section */
+        .mission-vision-section {
+            padding: 80px 40px;
+            background: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0 0 15px 0;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin: 0;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mv-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #FF5722;
+            transition: all 0.3s;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 87, 34, 0.15);
+        }
+
+        .mv-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .mv-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0 0 20px 0;
+        }
+
+        .mv-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 40px;
+            background: #f8f9fa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(10, 35, 66, 0.15);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 50%, #FF5722 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(10, 35, 66, 0.8), transparent);
+        }
+
+        .team-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0 0 10px 0;
+        }
+
+        .team-role {
+            font-size: 16px;
+            color: #FF5722;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Decorative Elements */
+        .blueprint-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #FF5722, #FF7043);
+            margin: 0 auto 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-about {
+                padding: 60px 20px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .company-intro {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .stats-grid,
+            .mv-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-section,
+            .mission-vision-section,
+            .team-section {
+                padding: 60px 20px;
+            }
+
+            .mv-card {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Hero Section -->
+  <div class="hero-about">
+   <div class="architectural-pattern"></div>
+   <div class="hero-content-about">
+    <h1 class="page-title" id="page-title">About Yadnesh Enterprises</h1>
+    <p class="company-intro" id="company-intro">Founded with a vision to transform spaces into masterpieces, Yadnesh Enterprises has been at the forefront of construction and interior design excellence. We combine innovative architectural solutions with traditional craftsmanship to deliver projects that exceed expectations. Our team of experienced engineers and designers work passionately to bring your dream spaces to life.</p>
+   </div>
+  </div><!-- Stats Section -->
+  <div class="stats-section">
+   <div class="stats-grid">
+    <div class="stat-card">
+     <div class="stat-icon">
+      📅
+     </div>
+     <h3 class="stat-title" id="stat-1-title">10+ Years Experience</h3>
+    </div>
+    <div class="stat-card">
+     <div class="stat-icon">
+      👷
+     </div>
+     <h3 class="stat-title" id="stat-2-title">Expert Architects &amp; Engineers</h3>
+    </div>
+    <div class="stat-card">
+     <div class="stat-icon">
+      🤝
+     </div>
+     <h3 class="stat-title" id="stat-3-title">Trusted Construction Partner</h3>
+    </div>
+    <div class="stat-card">
+     <div class="stat-icon">
+      ⭐
+     </div>
+     <h3 class="stat-title" id="stat-4-title">100% Customer Satisfaction</h3>
+    </div>
+   </div>
+  </div><!-- Mission & Vision Section -->
+  <div class="mission-vision-section">
+   <div class="section-header">
+    <div class="blueprint-line"></div>
+    <h2 class="section-title">Mission &amp; Vision</h2>
+    <p class="section-subtitle">Guided by purpose, driven by excellence</p>
+   </div>
+   <div class="mv-grid">
+    <div class="mv-card">
+     <div class="mv-icon">
+      🎯
+     </div>
+     <h3 class="mv-title" id="mission-title">Our Mission</h3>
+     <p class="mv-text" id="mission-text">To deliver exceptional construction and interior design solutions that combine innovation, quality, and sustainability. We strive to create spaces that inspire, function flawlessly, and stand the test of time, while maintaining the highest standards of professionalism and customer service.</p>
+    </div>
+    <div class="mv-card">
+     <div class="mv-icon">
+      🌟
+     </div>
+     <h3 class="mv-title" id="vision-title">Our Vision</h3>
+     <p class="mv-text" id="vision-text">To be the most trusted name in construction and interior design, recognized for transforming architectural dreams into reality. We envision a future where every project we undertake sets new benchmarks in quality, innovation, and customer satisfaction, making us the preferred choice for discerning clients.</p>
+    </div>
+   </div>
+  </div><!-- Team Section -->
+  <div class="team-section">
+   <div class="section-header">
+    <div class="blueprint-line"></div>
+    <h2 class="section-title">Meet Our Team</h2>
+    <p class="section-subtitle">Skilled professionals dedicated to your vision</p>
+   </div>
+   <div class="team-grid">
+    <div class="team-card">
+     <div class="team-photo">
+      👨‍💼
+     </div>
+     <div class="team-info">
+      <h3 class="team-name" id="team-member-1-name">Rajesh Kumar</h3>
+      <p class="team-role" id="team-member-1-role">Chief Architect</p>
+     </div>
+    </div>
+    <div class="team-card">
+     <div class="team-photo">
+      👩‍💼
+     </div>
+     <div class="team-info">
+      <h3 class="team-name" id="team-member-2-name">Priya Sharma</h3>
+      <p class="team-role" id="team-member-2-role">Senior Civil Engineer</p>
+     </div>
+    </div>
+    <div class="team-card">
+     <div class="team-photo">
+      👨‍💼
+     </div>
+     <div class="team-info">
+      <h3 class="team-name" id="team-member-3-name">Amit Patel</h3>
+      <p class="team-role" id="team-member-3-role">Interior Design Lead</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            background_color: "#0A2342",
+            surface_color: "#ffffff",
+            text_color: "#333333",
+            primary_action_color: "#FF5722",
+            secondary_action_color: "#E64A19",
+            page_title: "About Yadnesh Enterprises",
+            company_intro: "Founded with a vision to transform spaces into masterpieces, Yadnesh Enterprises has been at the forefront of construction and interior design excellence. We combine innovative architectural solutions with traditional craftsmanship to deliver projects that exceed expectations. Our team of experienced engineers and designers work passionately to bring your dream spaces to life.",
+            stat_1_title: "10+ Years Experience",
+            stat_2_title: "Expert Architects & Engineers",
+            stat_3_title: "Trusted Construction Partner",
+            stat_4_title: "100% Customer Satisfaction",
+            mission_title: "Our Mission",
+            mission_text: "To deliver exceptional construction and interior design solutions that combine innovation, quality, and sustainability. We strive to create spaces that inspire, function flawlessly, and stand the test of time, while maintaining the highest standards of professionalism and customer service.",
+            vision_title: "Our Vision",
+            vision_text: "To be the most trusted name in construction and interior design, recognized for transforming architectural dreams into reality. We envision a future where every project we undertake sets new benchmarks in quality, innovation, and customer satisfaction, making us the preferred choice for discerning clients.",
+            team_member_1_name: "Rajesh Kumar",
+            team_member_1_role: "Chief Architect",
+            team_member_2_name: "Priya Sharma",
+            team_member_2_role: "Senior Civil Engineer",
+            team_member_3_name: "Amit Patel",
+            team_member_3_role: "Interior Design Lead",
+            font_family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+            font_size: 16
+        };
+
+        let config = { ...defaultConfig };
+
+        async function onConfigChange(newConfig) {
+            const customFont = newConfig.font_family || defaultConfig.font_family;
+            const baseFontStack = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
+            const fontFamily = `${customFont}, ${baseFontStack}`;
+            const baseSize = newConfig.font_size || defaultConfig.font_size;
+
+            document.body.style.fontFamily = fontFamily;
+
+            // Apply font sizes proportionally
+            document.querySelector('.page-title').style.fontSize = `${baseSize * 3.5}px`;
+            document.querySelector('.company-intro').style.fontSize = `${baseSize * 1.25}px`;
+            document.querySelector('.section-title').style.fontSize = `${baseSize * 2.625}px`;
+            document.querySelector('.section-subtitle').style.fontSize = `${baseSize * 1.125}px`;
+            document.querySelectorAll('.stat-title').forEach(el => el.style.fontSize = `${baseSize * 1.125}px`);
+            document.querySelectorAll('.mv-title').forEach(el => el.style.fontSize = `${baseSize * 1.75}px`);
+            document.querySelectorAll('.mv-text').forEach(el => el.style.fontSize = `${baseSize}px`);
+            document.querySelectorAll('.team-name').forEach(el => el.style.fontSize = `${baseSize * 1.5}px`);
+            document.querySelectorAll('.team-role').forEach(el => el.style.fontSize = `${baseSize}px`);
+
+            // Apply colors
+            const bgColor = newConfig.background_color || defaultConfig.background_color;
+            const surfaceColor = newConfig.surface_color || defaultConfig.surface_color;
+            const textColor = newConfig.text_color || defaultConfig.text_color;
+            const primaryColor = newConfig.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryColor = newConfig.secondary_action_color || defaultConfig.secondary_action_color;
+
+            document.body.style.background = surfaceColor;
+            document.body.style.color = textColor;
+
+            document.querySelector('.hero-about').style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            document.querySelectorAll('.stat-card').forEach(el => el.style.background = surfaceColor);
+            document.querySelectorAll('.team-card').forEach(el => el.style.background = surfaceColor);
+            document.querySelectorAll('.section-title').forEach(el => el.style.color = bgColor);
+            document.querySelectorAll('.stat-title').forEach(el => el.style.color = bgColor);
+            document.querySelectorAll('.mv-title').forEach(el => el.style.color = bgColor);
+            document.querySelectorAll('.team-name').forEach(el => el.style.color = bgColor);
+
+            document.querySelectorAll('.stat-icon').forEach(el => {
+                el.style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+            });
+            document.querySelectorAll('.stat-card::before').forEach(el => {
+                el.style.background = `linear-gradient(90deg, ${primaryColor}, ${secondaryColor})`;
+            });
+            document.querySelectorAll('.mv-card').forEach(el => {
+                el.style.borderLeftColor = primaryColor;
+            });
+            document.querySelectorAll('.team-role').forEach(el => el.style.color = primaryColor);
+            document.querySelectorAll('.blueprint-line').forEach(el => {
+                el.style.background = `linear-gradient(90deg, ${primaryColor}, ${secondaryColor})`;
+            });
+
+            // Update text content
+            document.getElementById('page-title').textContent = newConfig.page_title || defaultConfig.page_title;
+            document.getElementById('company-intro').textContent = newConfig.company_intro || defaultConfig.company_intro;
+            document.getElementById('stat-1-title').textContent = newConfig.stat_1_title || defaultConfig.stat_1_title;
+            document.getElementById('stat-2-title').textContent = newConfig.stat_2_title || defaultConfig.stat_2_title;
+            document.getElementById('stat-3-title').textContent = newConfig.stat_3_title || defaultConfig.stat_3_title;
+            document.getElementById('stat-4-title').textContent = newConfig.stat_4_title || defaultConfig.stat_4_title;
+            document.getElementById('mission-title').textContent = newConfig.mission_title || defaultConfig.mission_title;
+            document.getElementById('mission-text').textContent = newConfig.mission_text || defaultConfig.mission_text;
+            document.getElementById('vision-title').textContent = newConfig.vision_title || defaultConfig.vision_title;
+            document.getElementById('vision-text').textContent = newConfig.vision_text || defaultConfig.vision_text;
+            document.getElementById('team-member-1-name').textContent = newConfig.team_member_1_name || defaultConfig.team_member_1_name;
+            document.getElementById('team-member-1-role').textContent = newConfig.team_member_1_role || defaultConfig.team_member_1_role;
+            document.getElementById('team-member-2-name').textContent = newConfig.team_member_2_name || defaultConfig.team_member_2_name;
+            document.getElementById('team-member-2-role').textContent = newConfig.team_member_2_role || defaultConfig.team_member_2_role;
+            document.getElementById('team-member-3-name').textContent = newConfig.team_member_3_name || defaultConfig.team_member_3_name;
+            document.getElementById('team-member-3-role').textContent = newConfig.team_member_3_role || defaultConfig.team_member_3_role;
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["page_title", config.page_title || defaultConfig.page_title],
+                    ["company_intro", config.company_intro || defaultConfig.company_intro],
+                    ["stat_1_title", config.stat_1_title || defaultConfig.stat_1_title],
+                    ["stat_2_title", config.stat_2_title || defaultConfig.stat_2_title],
+                    ["stat_3_title", config.stat_3_title || defaultConfig.stat_3_title],
+                    ["stat_4_title", config.stat_4_title || defaultConfig.stat_4_title],
+                    ["mission_title", config.mission_title || defaultConfig.mission_title],
+                    ["mission_text", config.mission_text || defaultConfig.mission_text],
+                    ["vision_title", config.vision_title || defaultConfig.vision_title],
+                    ["vision_text", config.vision_text || defaultConfig.vision_text],
+                    ["team_member_1_name", config.team_member_1_name || defaultConfig.team_member_1_name],
+                    ["team_member_1_role", config.team_member_1_role || defaultConfig.team_member_1_role],
+                    ["team_member_2_name", config.team_member_2_name || defaultConfig.team_member_2_name],
+                    ["team_member_2_role", config.team_member_2_role || defaultConfig.team_member_2_role],
+                    ["team_member_3_name", config.team_member_3_name || defaultConfig.team_member_3_name],
+                    ["team_member_3_role", config.team_member_3_role || defaultConfig.team_member_3_role]
+                ])
+            });
+        }
+
+        // Initialize with default config
+        onConfigChange(defaultConfig);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0d930b72bc8ee8',t:'MTc2MzUzMjk0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

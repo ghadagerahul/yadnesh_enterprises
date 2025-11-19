@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Yadnesh Enterprises</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 15px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .page-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        /* Contact Details Section */
+        .contact-details-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(10, 35, 66, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FF5722, #FF7043);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 87, 34, 0.15);
+            border-color: #FF5722;
+        }
+
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .contact-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .contact-link {
+            color: #FF5722;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .contact-link:hover {
+            color: #FF7043;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #075E54);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Form and Map Section */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        /* Contact Form */
+        .form-section {
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(10, 35, 66, 0.1);
+        }
+
+        .form-header {
+            margin-bottom: 35px;
+        }
+
+        .form-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0 0 10px 0;
+        }
+
+        .form-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: #0A2342;
+            margin-bottom: 10px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: #ffffff;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #FF5722;
+            box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #FF5722, #FF7043);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #E64A19, #FF5722);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+            color: #ffffff;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Map Section */
+        .map-section {
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(10, 35, 66, 0.1);
+        }
+
+        .map-header {
+            margin-bottom: 30px;
+        }
+
+        .map-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 50%, #FF5722 100%);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 30px,
+                rgba(255,255,255,0.05) 30px,
+                rgba(255,255,255,0.05) 60px
+            );
+            animation: moveMapPattern 15s linear infinite;
+        }
+
+        @keyframes moveMapPattern {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .map-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .map-text {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            color: #ffffff;
+            padding: 60px 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,.02) 30px, rgba(255,255,255,.02) 60px);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            color: #FF5722;
+        }
+
+        .footer-section p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin: 10px 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-placeholder {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 20px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 60px 20px;
+            }
+
+            .contact-details-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 60px;
+            }
+
+            .content-grid {
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+
+            .form-section,
+            .map-section {
+                padding: 30px 25px;
+            }
+
+            .form-title,
+            .map-title {
+                font-size: 26px;
+            }
+
+            .footer {
+                padding: 50px 20px 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Header -->
+  <header class="header">
+   <div class="header-content">
+    <h1 class="page-title" id="page-title">Get In Touch With Us</h1>
+    <p class="page-subtitle" id="page-subtitle">We're here to help bring your vision to life. Reach out to us today!</p>
+   </div>
+  </header><!-- Main Container -->
+  <main class="container"><!-- Contact Details Section -->
+   <section class="contact-details-section"><!-- Phone Card -->
+    <div class="contact-card">
+     <div class="contact-icon">
+      📞
+     </div>
+     <h3 class="contact-card-title">Call Us</h3>
+     <p class="contact-info"><a href="tel:9653194467" class="contact-link" id="phone-1">9653194467</a><br><a href="tel:7045053784" class="contact-link" id="phone-2">7045053784</a></p>
+    </div><!-- WhatsApp Card -->
+    <div class="contact-card">
+     <div class="contact-icon">
+      💬
+     </div>
+     <h3 class="contact-card-title">WhatsApp</h3>
+     <p class="contact-info">Chat with us instantly</p><a href="https://wa.me/919653194467" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" id="whatsapp-btn"> <span style="font-size: 20px;">📱</span> <span>Message Us</span> </a>
+    </div><!-- Email Card -->
+    <div class="contact-card">
+     <div class="contact-icon">
+      ✉️
+     </div>
+     <h3 class="contact-card-title">Email Us</h3>
+     <p class="contact-info"><a href="mailto:contact@yadneshenterprises.com" class="contact-link" id="email-address">contact@yadneshenterprises.com</a></p>
+    </div><!-- Address Card -->
+    <div class="contact-card">
+     <div class="contact-icon">
+      📍
+     </div>
+     <h3 class="contact-card-title">Visit Us</h3>
+     <p class="contact-info" id="business-address">123 Business Street, Mumbai, Maharashtra 400001, India</p>
+    </div>
+   </section><!-- Form and Map Grid -->
+   <div class="content-grid"><!-- Contact Form -->
+    <section class="form-section">
+     <div class="form-header">
+      <h2 class="form-title" id="form-title">Send Us a Message</h2>
+      <p class="form-subtitle" id="form-subtitle">Fill out the form below and we'll get back to you shortly</p>
+     </div>
+     <form id="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group"><label for="name" class="form-label" id="name-label">Full Name</label> <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group"><label for="phone" class="form-label" id="phone-label">Phone Number</label> <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number" required>
+      </div>
+      <div class="form-group"><label for="email" class="form-label" id="email-label">Email Address</label> <input type="email" id="email" class="form-input" placeholder="Enter your email address" required>
+      </div>
+      <div class="form-group"><label for="requirements" class="form-label" id="requirements-label">Your Requirements</label> <textarea id="requirements" class="form-textarea" placeholder="Tell us about your project requirements..." required></textarea>
+      </div><button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
+     </form>
+     <div class="success-message" id="success-message">
+      ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+     </div>
+    </section><!-- Map Section -->
+    <section class="map-section">
+     <div class="map-header">
+      <h2 class="map-title" id="map-title">Visit Our Office</h2>
+     </div>
+     <div class="map-placeholder">
+      <div class="map-icon">
+       🗺️
+      </div>
+      <div class="map-text">
+       Google Maps Location
+      </div>
+     </div>
+    </section>
+   </div>
+  </main><!-- Footer -->
+  <footer class="footer">
+   <div class="footer-content">
+    <div class="footer-grid">
+     <div class="footer-section">
+      <h3 id="footer-company-name">Yadnesh Enterprises</h3>
+      <p id="footer-tagline">Your Trusted Partner in Construction &amp; Interior Design</p>
+      <p id="footer-description">We specialize in delivering premium construction and interior design solutions with exceptional quality and attention to detail.</p>
+     </div>
+     <div class="footer-section">
+      <h3>Quick Contact</h3>
+      <p>📞 Phone: <span id="footer-phone-1">9653194467</span></p>
+      <p>📱 Alternative: <span id="footer-phone-2">7045053784</span></p>
+      <p>✉️ Email: <span id="footer-email">contact@yadneshenterprises.com</span></p>
+     </div>
+     <div class="footer-section">
+      <h3>Business Hours</h3>
+      <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
+      <p>Sunday: 10:00 AM - 5:00 PM</p>
+      <p>We're always available for emergency services</p>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>© 2024 Yadnesh Enterprises. All Rights Reserved. | Building Dreams Since 2010</p>
+    </div>
+   </div>
+  </footer>
+  <script>
+        const defaultConfig = {
+            background_color: "#0A2342",
+            surface_color: "#ffffff",
+            text_color: "#333333",
+            primary_action_color: "#FF5722",
+            secondary_action_color: "#FF7043",
+            page_title: "Get In Touch With Us",
+            page_subtitle: "We're here to help bring your vision to life. Reach out to us today!",
+            phone_1: "9653194467",
+            phone_2: "7045053784",
+            whatsapp_number: "9653194467",
+            email_address: "contact@yadneshenterprises.com",
+            business_address: "123 Business Street, Mumbai, Maharashtra 400001, India",
+            form_title: "Send Us a Message",
+            form_subtitle: "Fill out the form below and we'll get back to you shortly",
+            name_label: "Full Name",
+            phone_label: "Phone Number",
+            email_label: "Email Address",
+            requirements_label: "Your Requirements",
+            submit_button_text: "Send Message",
+            map_title: "Visit Our Office",
+            footer_company_name: "Yadnesh Enterprises",
+            footer_tagline: "Your Trusted Partner in Construction & Interior Design",
+            footer_description: "We specialize in delivering premium construction and interior design solutions with exceptional quality and attention to detail.",
+            font_family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            font_size: 16
+        };
+
+        let config = { ...defaultConfig };
+
+        async function onConfigChange(newConfig) {
+            const customFont = newConfig.font_family || defaultConfig.font_family;
+            const baseFontStack = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            const fontFamily = `${customFont}, ${baseFontStack}`;
+            const baseSize = newConfig.font_size || defaultConfig.font_size;
+
+            document.body.style.fontFamily = fontFamily;
+
+            // Apply font sizes
+            document.querySelector('.page-title').style.fontSize = `${baseSize * 3.25}px`;
+            document.querySelector('.page-subtitle').style.fontSize = `${baseSize * 1.25}px`;
+            document.querySelectorAll('.contact-card-title').forEach(el => el.style.fontSize = `${baseSize * 1.125}px`);
+            document.querySelectorAll('.contact-info').forEach(el => el.style.fontSize = `${baseSize}px`);
+            document.querySelector('.form-title').style.fontSize = `${baseSize * 2}px`;
+            document.querySelector('.form-subtitle').style.fontSize = `${baseSize}px`;
+            document.querySelectorAll('.form-label').forEach(el => el.style.fontSize = `${baseSize * 0.9375}px`);
+            document.querySelectorAll('.form-input, .form-textarea').forEach(el => el.style.fontSize = `${baseSize * 0.9375}px`);
+            document.querySelector('.submit-btn').style.fontSize = `${baseSize * 1.0625}px`;
+            document.querySelector('.map-title').style.fontSize = `${baseSize * 2}px`;
+            document.querySelectorAll('.footer-section h3').forEach(el => el.style.fontSize = `${baseSize * 1.375}px`);
+            document.querySelectorAll('.footer-section p').forEach(el => el.style.fontSize = `${baseSize * 0.9375}px`);
+
+            // Apply colors
+            const bgColor = newConfig.background_color || defaultConfig.background_color;
+            const surfaceColor = newConfig.surface_color || defaultConfig.surface_color;
+            const textColor = newConfig.text_color || defaultConfig.text_color;
+            const primaryColor = newConfig.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryColor = newConfig.secondary_action_color || defaultConfig.secondary_action_color;
+
+            document.body.style.color = textColor;
+            document.querySelector('.header').style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            document.querySelector('.footer').style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            
+            document.querySelectorAll('.contact-card').forEach(el => el.style.background = surfaceColor);
+            document.querySelector('.form-section').style.background = surfaceColor;
+            document.querySelector('.map-section').style.background = surfaceColor;
+            
+            document.querySelectorAll('.contact-card-title').forEach(el => el.style.color = bgColor);
+            document.querySelectorAll('.contact-info').forEach(el => el.style.color = textColor);
+            document.querySelectorAll('.contact-link').forEach(el => el.style.color = primaryColor);
+            document.querySelector('.form-title').style.color = bgColor;
+            document.querySelector('.form-subtitle').style.color = textColor;
+            document.querySelectorAll('.form-label').forEach(el => el.style.color = bgColor);
+            document.querySelector('.map-title').style.color = bgColor;
+            
+            document.querySelector('.submit-btn').style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+            document.querySelectorAll('.footer-section h3').forEach(el => el.style.color = primaryColor);
+
+            // Update text content
+            document.getElementById('page-title').textContent = newConfig.page_title || defaultConfig.page_title;
+            document.getElementById('page-subtitle').textContent = newConfig.page_subtitle || defaultConfig.page_subtitle;
+            
+            const phone1 = newConfig.phone_1 || defaultConfig.phone_1;
+            const phone2 = newConfig.phone_2 || defaultConfig.phone_2;
+            const whatsappNum = newConfig.whatsapp_number || defaultConfig.whatsapp_number;
+            const email = newConfig.email_address || defaultConfig.email_address;
+            
+            document.getElementById('phone-1').textContent = phone1;
+            document.getElementById('phone-1').href = `tel:${phone1}`;
+            document.getElementById('phone-2').textContent = phone2;
+            document.getElementById('phone-2').href = `tel:${phone2}`;
+            document.getElementById('whatsapp-btn').href = `https://wa.me/${whatsappNum.replace(/\D/g, '')}`;
+            document.getElementById('email-address').textContent = email;
+            document.getElementById('email-address').href = `mailto:${email}`;
+            document.getElementById('business-address').textContent = newConfig.business_address || defaultConfig.business_address;
+            
+            document.getElementById('form-title').textContent = newConfig.form_title || defaultConfig.form_title;
+            document.getElementById('form-subtitle').textContent = newConfig.form_subtitle || defaultConfig.form_subtitle;
+            document.getElementById('name-label').textContent = newConfig.name_label || defaultConfig.name_label;
+            document.getElementById('phone-label').textContent = newConfig.phone_label || defaultConfig.phone_label;
+            document.getElementById('email-label').textContent = newConfig.email_label || defaultConfig.email_label;
+            document.getElementById('requirements-label').textContent = newConfig.requirements_label || defaultConfig.requirements_label;
+            document.getElementById('submit-btn').textContent = newConfig.submit_button_text || defaultConfig.submit_button_text;
+            
+            document.getElementById('map-title').textContent = newConfig.map_title || defaultConfig.map_title;
+            
+            document.getElementById('footer-company-name').textContent = newConfig.footer_company_name || defaultConfig.footer_company_name;
+            document.getElementById('footer-tagline').textContent = newConfig.footer_tagline || defaultConfig.footer_tagline;
+            document.getElementById('footer-description').textContent = newConfig.footer_description || defaultConfig.footer_description;
+            document.getElementById('footer-phone-1').textContent = phone1;
+            document.getElementById('footer-phone-2').textContent = phone2;
+            document.getElementById('footer-email').textContent = email;
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["page_title", config.page_title || defaultConfig.page_title],
+                    ["page_subtitle", config.page_subtitle || defaultConfig.page_subtitle],
+                    ["phone_1", config.phone_1 || defaultConfig.phone_1],
+                    ["phone_2", config.phone_2 || defaultConfig.phone_2],
+                    ["whatsapp_number", config.whatsapp_number || defaultConfig.whatsapp_number],
+                    ["email_address", config.email_address || defaultConfig.email_address],
+                    ["business_address", config.business_address || defaultConfig.business_address],
+                    ["form_title", config.form_title || defaultConfig.form_title],
+                    ["form_subtitle", config.form_subtitle || defaultConfig.form_subtitle],
+                    ["name_label", config.name_label || defaultConfig.name_label],
+                    ["phone_label", config.phone_label || defaultConfig.phone_label],
+                    ["email_label", config.email_label || defaultConfig.email_label],
+                    ["requirements_label", config.requirements_label || defaultConfig.requirements_label],
+                    ["submit_button_text", config.submit_button_text || defaultConfig.submit_button_text],
+                    ["map_title", config.map_title || defaultConfig.map_title],
+                    ["footer_company_name", config.footer_company_name || defaultConfig.footer_company_name],
+                    ["footer_tagline", config.footer_tagline || defaultConfig.footer_tagline],
+                    ["footer_description", config.footer_description || defaultConfig.footer_description]
+                ])
+            });
+        }
+
+        onConfigChange(defaultConfig);
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            
+            // Show success message
+            successMessage.classList.add('show');
+            
+            // Reset form
+            form.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0da4f633478ee8',t:'MTc2MzUzMzY3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

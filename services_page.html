@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services - Yadnesh Enterprises</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Hero Header */
+        .hero-header {
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,.03) 40px, rgba(255,255,255,.03) 41px),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,.03) 40px, rgba(255,255,255,.03) 41px);
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 20px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .page-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.95);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .accent-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF5722, #FF7043);
+            margin: 30px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Services Section */
+        main {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 25px rgba(10, 35, 66, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF5722, #FF7043);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 40px rgba(255, 87, 34, 0.15);
+            border-color: #FF5722;
+        }
+
+        .service-icon {
+            width: 85px;
+            height: 85px;
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(10, 35, 66, 0.15);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, #FF5722, #FF7043);
+            transform: rotateY(360deg);
+            box-shadow: 0 12px 30px rgba(255, 87, 34, 0.3);
+        }
+
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, #FF5722, #FF7043);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover .service-icon::after {
+            opacity: 0.3;
+        }
+
+        .service-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+
+        .service-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            padding: 80px 40px;
+            text-align: center;
+            margin-top: 80px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 50px,
+                rgba(255, 87, 34, 0.05) 50px,
+                rgba(255, 87, 34, 0.05) 100px
+            );
+            animation: slidePattern 20s linear infinite;
+        }
+
+        @keyframes slidePattern {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 15px 0;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin: 0 0 40px 0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #FF5722, #FF7043);
+            color: #ffffff;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(255, 87, 34, 0.4);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #E64A19, #FF5722);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(255, 87, 34, 0.5);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px auto 80px;
+            max-width: 1000px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #FF5722;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #FF5722;
+            margin: 0 0 8px 0;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 60px 20px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            main {
+                padding: 60px 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .service-card {
+                padding: 30px 25px;
+            }
+
+            .cta-section {
+                padding: 60px 25px;
+                margin-top: 60px;
+                border-radius: 20px;
+            }
+
+            .cta-title {
+                font-size: 32px;
+            }
+
+            .cta-subtitle {
+                font-size: 16px;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 40px auto 60px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Hero Header -->
+  <header class="hero-header">
+   <div class="hero-content">
+    <h1 class="page-title" id="page-title">Our Premium Services</h1>
+    <p class="page-subtitle" id="page-subtitle">Comprehensive construction and interior design solutions tailored to transform your space into a masterpiece</p>
+    <div class="accent-line"></div>
+   </div>
+  </header><!-- Stats Bar -->
+  <div class="stats-bar">
+   <div class="stat-item">
+    <div class="stat-number">
+     13+
+    </div>
+    <div class="stat-label">
+     Services Offered
+    </div>
+   </div>
+   <div class="stat-item">
+    <div class="stat-number">
+     10+
+    </div>
+    <div class="stat-label">
+     Years Experience
+    </div>
+   </div>
+   <div class="stat-item">
+    <div class="stat-number">
+     500+
+    </div>
+    <div class="stat-label">
+     Projects Completed
+    </div>
+   </div>
+   <div class="stat-item">
+    <div class="stat-number">
+     100%
+    </div>
+    <div class="stat-label">
+     Satisfaction
+    </div>
+   </div>
+  </div><!-- Services Grid -->
+  <main>
+   <div class="services-grid"><!-- Service 1 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🔲
+     </div>
+     <h3 class="service-title" id="service-1-title">Kitchen Platform</h3>
+     <p class="service-description" id="service-1-desc">Premium granite and marble kitchen platforms designed for durability and elegance. Custom sizes and finishes to match your dream kitchen aesthetic.</p>
+    </div><!-- Service 2 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🛒
+     </div>
+     <h3 class="service-title" id="service-2-title">Kitchen Trolley</h3>
+     <p class="service-description" id="service-2-desc">Custom-designed mobile kitchen trolleys with smart storage solutions. Made from high-quality materials for long-lasting functionality and style.</p>
+    </div><!-- Service 3 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🍳
+     </div>
+     <h3 class="service-title" id="service-3-title">Modular Kitchen</h3>
+     <p class="service-description" id="service-3-desc">Complete modular kitchen solutions with premium cabinets, modern fittings, and space-optimized designs. Transform your cooking space into a culinary paradise.</p>
+    </div><!-- Service 4 -->
+    <div class="service-card">
+     <div class="service-icon">
+      ⚡
+     </div>
+     <h3 class="service-title" id="service-4-title">Electric Wiring</h3>
+     <p class="service-description" id="service-4-desc">Professional electrical installations and rewiring services. Safe, efficient systems with modern circuit designs and quality branded components.</p>
+    </div><!-- Service 5 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🚰
+     </div>
+     <h3 class="service-title" id="service-5-title">Plumbing</h3>
+     <p class="service-description" id="service-5-desc">Complete plumbing solutions including pipeline installations, fixture fittings, and drainage systems. Expert service ensuring leak-free performance.</p>
+    </div><!-- Service 6 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🪑
+     </div>
+     <h3 class="service-title" id="service-6-title">Furniture &amp; Wallpaper</h3>
+     <p class="service-description" id="service-6-desc">Custom furniture design and premium wallpaper installations. Create stunning interiors with our curated collection of styles and textures.</p>
+    </div><!-- Service 7 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🏠
+     </div>
+     <h3 class="service-title" id="service-7-title">Terrace Shed Work</h3>
+     <p class="service-description" id="service-7-desc">Durable terrace shed installations using quality materials. Weather-resistant structures that protect and enhance your outdoor spaces.</p>
+    </div><!-- Service 8 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🏛️
+     </div>
+     <h3 class="service-title" id="service-8-title">False Ceiling (POP)</h3>
+     <p class="service-description" id="service-8-desc">Elegant POP false ceiling designs that add dimension and sophistication. Modern patterns with integrated lighting solutions for stunning interiors.</p>
+    </div><!-- Service 9 -->
+    <div class="service-card">
+     <div class="service-icon">
+      📐
+     </div>
+     <h3 class="service-title" id="service-9-title">Style Flooring</h3>
+     <p class="service-description" id="service-9-desc">Premium flooring solutions including tiles, marble, granite, and wooden finishes. Expert installation ensuring perfect alignment and lasting beauty.</p>
+    </div><!-- Service 10 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🚪
+     </div>
+     <h3 class="service-title" id="service-10-title">Sliding</h3>
+     <p class="service-description" id="service-10-desc">Smooth sliding door and window systems with premium tracks and fittings. Space-saving solutions with modern designs and effortless operation.</p>
+    </div><!-- Service 11 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🏗️
+     </div>
+     <h3 class="service-title" id="service-11-title">Construction (All Types)</h3>
+     <p class="service-description" id="service-11-desc">Complete construction services for residential and commercial projects. From foundation to finishing, we handle everything with precision and quality.</p>
+    </div><!-- Service 12 -->
+    <div class="service-card">
+     <div class="service-icon">
+      🪟
+     </div>
+     <h3 class="service-title" id="service-12-title">Door &amp; Window Frame (Granite)</h3>
+     <p class="service-description" id="service-12-desc">Premium granite frames for doors and windows providing durability and timeless elegance. Custom designs with perfect measurements and finishes.</p>
+    </div><!-- Service 13 -->
+    <div class="service-card">
+     <div class="service-icon">
+      📊
+     </div>
+     <h3 class="service-title" id="service-13-title">Architecture Planning (2D &amp; 3D)</h3>
+     <p class="service-description" id="service-13-desc">Professional architectural design and planning services with detailed 2D layouts and immersive 3D visualizations. Bring your vision to life before construction begins.</p>
+    </div>
+   </div>
+  </main><!-- CTA Section -->
+  <div class="cta-section">
+   <div class="cta-content">
+    <h2 class="cta-title" id="cta-title">Ready to Transform Your Space?</h2>
+    <p class="cta-subtitle" id="cta-subtitle">Contact us today for a free consultation and let's bring your dream project to life</p><button class="cta-button" id="cta-button" onclick="scrollToTop()"> <span style="font-size: 24px;">📞</span> <span id="cta-button-text">Get Free Consultation</span> </button>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            background_color: "#0A2342",
+            surface_color: "#ffffff",
+            text_color: "#333333",
+            primary_action_color: "#FF5722",
+            secondary_action_color: "#FF7043",
+            page_title: "Our Premium Services",
+            page_subtitle: "Comprehensive construction and interior design solutions tailored to transform your space into a masterpiece",
+            service_1_title: "Kitchen Platform",
+            service_1_desc: "Premium granite and marble kitchen platforms designed for durability and elegance. Custom sizes and finishes to match your dream kitchen aesthetic.",
+            service_2_title: "Kitchen Trolley",
+            service_2_desc: "Custom-designed mobile kitchen trolleys with smart storage solutions. Made from high-quality materials for long-lasting functionality and style.",
+            service_3_title: "Modular Kitchen",
+            service_3_desc: "Complete modular kitchen solutions with premium cabinets, modern fittings, and space-optimized designs. Transform your cooking space into a culinary paradise.",
+            service_4_title: "Electric Wiring",
+            service_4_desc: "Professional electrical installations and rewiring services. Safe, efficient systems with modern circuit designs and quality branded components.",
+            service_5_title: "Plumbing",
+            service_5_desc: "Complete plumbing solutions including pipeline installations, fixture fittings, and drainage systems. Expert service ensuring leak-free performance.",
+            service_6_title: "Furniture & Wallpaper",
+            service_6_desc: "Custom furniture design and premium wallpaper installations. Create stunning interiors with our curated collection of styles and textures.",
+            service_7_title: "Terrace Shed Work",
+            service_7_desc: "Durable terrace shed installations using quality materials. Weather-resistant structures that protect and enhance your outdoor spaces.",
+            service_8_title: "False Ceiling (POP)",
+            service_8_desc: "Elegant POP false ceiling designs that add dimension and sophistication. Modern patterns with integrated lighting solutions for stunning interiors.",
+            service_9_title: "Style Flooring",
+            service_9_desc: "Premium flooring solutions including tiles, marble, granite, and wooden finishes. Expert installation ensuring perfect alignment and lasting beauty.",
+            service_10_title: "Sliding",
+            service_10_desc: "Smooth sliding door and window systems with premium tracks and fittings. Space-saving solutions with modern designs and effortless operation.",
+            service_11_title: "Construction (All Types)",
+            service_11_desc: "Complete construction services for residential and commercial projects. From foundation to finishing, we handle everything with precision and quality.",
+            service_12_title: "Door & Window Frame (Granite)",
+            service_12_desc: "Premium granite frames for doors and windows providing durability and timeless elegance. Custom designs with perfect measurements and finishes.",
+            service_13_title: "Architecture Planning (2D & 3D)",
+            service_13_desc: "Professional architectural design and planning services with detailed 2D layouts and immersive 3D visualizations. Bring your vision to life before construction begins.",
+            cta_title: "Ready to Transform Your Space?",
+            cta_subtitle: "Contact us today for a free consultation and let's bring your dream project to life",
+            cta_button_text: "Get Free Consultation",
+            font_family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            font_size: 16
+        };
+
+        let config = { ...defaultConfig };
+
+        async function onConfigChange(newConfig) {
+            const customFont = newConfig.font_family || defaultConfig.font_family;
+            const baseFontStack = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            const fontFamily = `${customFont}, ${baseFontStack}`;
+            const baseSize = newConfig.font_size || defaultConfig.font_size;
+
+            document.body.style.fontFamily = fontFamily;
+
+            // Apply font sizes
+            document.querySelector('.page-title').style.fontSize = `${baseSize * 3.25}px`;
+            document.querySelector('.page-subtitle').style.fontSize = `${baseSize * 1.25}px`;
+            document.querySelectorAll('.service-title').forEach(el => el.style.fontSize = `${baseSize * 1.375}px`);
+            document.querySelectorAll('.service-description').forEach(el => el.style.fontSize = `${baseSize * 0.9375}px`);
+            document.querySelector('.cta-title').style.fontSize = `${baseSize * 2.625}px`;
+            document.querySelector('.cta-subtitle').style.fontSize = `${baseSize * 1.125}px`;
+            document.querySelector('.cta-button').style.fontSize = `${baseSize * 1.125}px`;
+            document.querySelectorAll('.stat-number').forEach(el => el.style.fontSize = `${baseSize * 2.25}px`);
+            document.querySelectorAll('.stat-label').forEach(el => el.style.fontSize = `${baseSize * 0.875}px`);
+
+            // Apply colors
+            const bgColor = newConfig.background_color || defaultConfig.background_color;
+            const surfaceColor = newConfig.surface_color || defaultConfig.surface_color;
+            const textColor = newConfig.text_color || defaultConfig.text_color;
+            const primaryColor = newConfig.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryColor = newConfig.secondary_action_color || defaultConfig.secondary_action_color;
+
+            document.body.style.background = surfaceColor;
+            document.body.style.color = textColor;
+
+            document.querySelector('.hero-header').style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            document.querySelector('.cta-section').style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            
+            document.querySelectorAll('.service-card').forEach(el => {
+                el.style.background = surfaceColor;
+                el.style.borderColor = 'transparent';
+            });
+            
+            document.querySelectorAll('.service-title').forEach(el => el.style.color = bgColor);
+            document.querySelectorAll('.service-description').forEach(el => el.style.color = textColor);
+            
+            document.querySelectorAll('.service-icon').forEach(el => {
+                el.style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            });
+
+            document.querySelectorAll('.accent-line').forEach(el => {
+                el.style.background = `linear-gradient(90deg, ${primaryColor}, ${secondaryColor})`;
+            });
+
+            document.querySelectorAll('.stat-number').forEach(el => el.style.color = primaryColor);
+            document.querySelectorAll('.stat-item').forEach(el => el.style.borderLeftColor = primaryColor);
+
+            document.querySelector('.cta-button').style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+
+            // Update text content
+            document.getElementById('page-title').textContent = newConfig.page_title || defaultConfig.page_title;
+            document.getElementById('page-subtitle').textContent = newConfig.page_subtitle || defaultConfig.page_subtitle;
+            
+            for (let i = 1; i <= 13; i++) {
+                document.getElementById(`service-${i}-title`).textContent = newConfig[`service_${i}_title`] || defaultConfig[`service_${i}_title`];
+                document.getElementById(`service-${i}-desc`).textContent = newConfig[`service_${i}_desc`] || defaultConfig[`service_${i}_desc`];
+            }
+
+            document.getElementById('cta-title').textContent = newConfig.cta_title || defaultConfig.cta_title;
+            document.getElementById('cta-subtitle').textContent = newConfig.cta_subtitle || defaultConfig.cta_subtitle;
+            document.getElementById('cta-button-text').textContent = newConfig.cta_button_text || defaultConfig.cta_button_text;
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => {
+                    const map = new Map([
+                        ["page_title", config.page_title || defaultConfig.page_title],
+                        ["page_subtitle", config.page_subtitle || defaultConfig.page_subtitle],
+                        ["cta_title", config.cta_title || defaultConfig.cta_title],
+                        ["cta_subtitle", config.cta_subtitle || defaultConfig.cta_subtitle],
+                        ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text]
+                    ]);
+                    
+                    for (let i = 1; i <= 13; i++) {
+                        map.set(`service_${i}_title`, config[`service_${i}_title`] || defaultConfig[`service_${i}_title`]);
+                        map.set(`service_${i}_desc`, config[`service_${i}_desc`] || defaultConfig[`service_${i}_desc`]);
+                    }
+                    
+                    return map;
+                }
+            });
+        }
+
+        onConfigChange(defaultConfig);
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0d9a7f77458ee8',t:'MTc2MzUzMzI0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

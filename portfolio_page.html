@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Yadnesh Enterprises</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            padding: 80px 40px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 15px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .page-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Category Tabs */
+        .tabs-container {
+            background: #ffffff;
+            padding: 30px 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tab-button {
+            padding: 14px 32px;
+            border: 2px solid #e0e0e0;
+            background: #ffffff;
+            color: #666;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,87,34,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .tab-button:hover::before {
+            left: 100%;
+        }
+
+        .tab-button:hover {
+            border-color: #FF5722;
+            color: #FF5722;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,87,34,0.2);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF5722, #FF7043);
+            color: #ffffff;
+            border-color: #FF5722;
+            box-shadow: 0 4px 15px rgba(255,87,34,0.3);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255,87,34,0.2);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 50%, #FF5722 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.05) 20px,
+                rgba(255,255,255,0.05) 40px
+            );
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .gallery-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .gallery-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .overlay-title {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+
+        .overlay-category {
+            color: #FF5722;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Before/After Section */
+        .comparison-section {
+            background: #ffffff;
+            padding: 80px 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .comparison-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0A2342;
+            margin: 0 0 15px 0;
+        }
+
+        .comparison-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin: 0;
+        }
+
+        .comparison-slider {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .comparison-side {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .before-side {
+            left: 0;
+            width: 50%;
+            background: linear-gradient(135deg, #555 0%, #333 100%);
+            border-right: 4px solid #ffffff;
+        }
+
+        .after-side {
+            right: 0;
+            width: 50%;
+            background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);
+            border-left: 4px solid #ffffff;
+        }
+
+        .comparison-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: grab;
+            z-index: 10;
+        }
+
+        .slider-handle:active {
+            cursor: grabbing;
+        }
+
+        .slider-instruction {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 16px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0A2342 0%, #1a4170 100%);
+            color: #ffffff;
+            padding: 60px 40px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,.02) 30px, rgba(255,255,255,.02) 60px);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin: 0 0 40px 0;
+            color: #ffffff;
+        }
+
+        .footer-contacts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.15);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #FF5722;
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #FF5722;
+            margin: 0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-value:hover {
+            color: #FF7043;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 20px 40px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            .tabs-container {
+                padding: 20px;
+            }
+
+            .tabs {
+                gap: 10px;
+            }
+
+            .tab-button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .gallery-section {
+                padding: 60px 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
+
+            .comparison-section {
+                padding: 60px 25px;
+                border-radius: 20px;
+            }
+
+            .comparison-title {
+                font-size: 32px;
+            }
+
+            .comparison-subtitle {
+                font-size: 16px;
+            }
+
+            .comparison-slider {
+                height: 350px;
+            }
+
+            .comparison-side {
+                font-size: 18px;
+            }
+
+            .comparison-icon {
+                font-size: 60px;
+            }
+
+            .slider-handle {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .footer {
+                padding: 50px 20px 30px;
+            }
+
+            .footer-title {
+                font-size: 28px;
+            }
+
+            .footer-contacts {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Hidden state for filtered items */
+        .gallery-item.hidden {
+            display: none;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Header -->
+  <header class="header">
+   <div class="header-content">
+    <h1 class="page-title" id="page-title">Our Recent Projects</h1>
+    <p class="page-subtitle" id="page-subtitle">Explore our portfolio of exceptional projects showcasing quality craftsmanship and stunning designs</p>
+   </div>
+  </header><!-- Category Tabs -->
+  <div class="tabs-container">
+   <div class="tabs"><button class="tab-button active" data-category="all" id="tab-1" onclick="filterGallery('all')">All Projects</button> <button class="tab-button" data-category="kitchen" id="tab-2" onclick="filterGallery('kitchen')">Kitchen</button> <button class="tab-button" data-category="interior" id="tab-3" onclick="filterGallery('interior')">Interior</button> <button class="tab-button" data-category="ceiling" id="tab-4" onclick="filterGallery('ceiling')">Ceiling</button> <button class="tab-button" data-category="construction" id="tab-5" onclick="filterGallery('construction')">Construction</button> <button class="tab-button" data-category="painting" id="tab-6" onclick="filterGallery('painting')">Painting</button>
+   </div>
+  </div><!-- Gallery Section -->
+  <section class="gallery-section">
+   <div class="gallery-grid" id="gallery-grid"><!-- Kitchen Projects -->
+    <div class="gallery-item" data-category="kitchen">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🍳
+      </div>
+      <div class="gallery-label">
+       Modular Kitchen
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Modern Modular Kitchen</h3>
+      <p class="overlay-category">Kitchen Design</p>
+     </div>
+    </div>
+    <div class="gallery-item" data-category="kitchen">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🔲
+      </div>
+      <div class="gallery-label">
+       Kitchen Platform
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Granite Kitchen Platform</h3>
+      <p class="overlay-category">Kitchen Design</p>
+     </div>
+    </div><!-- Interior Projects -->
+    <div class="gallery-item" data-category="interior">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🛋️
+      </div>
+      <div class="gallery-label">
+       Living Room
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Luxury Living Room</h3>
+      <p class="overlay-category">Interior Design</p>
+     </div>
+    </div>
+    <div class="gallery-item" data-category="interior">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🛏️
+      </div>
+      <div class="gallery-label">
+       Bedroom Design
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Master Bedroom Suite</h3>
+      <p class="overlay-category">Interior Design</p>
+     </div>
+    </div>
+    <div class="gallery-item" data-category="interior">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🪑
+      </div>
+      <div class="gallery-label">
+       Furniture Setup
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Custom Furniture</h3>
+      <p class="overlay-category">Interior Design</p>
+     </div>
+    </div><!-- Ceiling Projects -->
+    <div class="gallery-item" data-category="ceiling">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🏛️
+      </div>
+      <div class="gallery-label">
+       POP Ceiling
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Designer POP Ceiling</h3>
+      <p class="overlay-category">False Ceiling</p>
+     </div>
+    </div>
+    <div class="gallery-item" data-category="ceiling">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       ✨
+      </div>
+      <div class="gallery-label">
+       False Ceiling
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Modern False Ceiling</h3>
+      <p class="overlay-category">False Ceiling</p>
+     </div>
+    </div><!-- Construction Projects -->
+    <div class="gallery-item" data-category="construction">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🏗️
+      </div>
+      <div class="gallery-label">
+       Building Construction
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Residential Building</h3>
+      <p class="overlay-category">Construction</p>
+     </div>
+    </div>
+    <div class="gallery-item" data-category="construction">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🏢
+      </div>
+      <div class="gallery-label">
+       Commercial Project
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Commercial Complex</h3>
+      <p class="overlay-category">Construction</p>
+     </div>
+    </div>
+    <div class="gallery-item" data-category="construction">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🏠
+      </div>
+      <div class="gallery-label">
+       Villa Construction
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Luxury Villa</h3>
+      <p class="overlay-category">Construction</p>
+     </div>
+    </div><!-- Painting Projects -->
+    <div class="gallery-item" data-category="painting">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🎨
+      </div>
+      <div class="gallery-label">
+       Wall Painting
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Premium Wall Paint</h3>
+      <p class="overlay-category">Painting</p>
+     </div>
+    </div>
+    <div class="gallery-item" data-category="painting">
+     <div class="gallery-placeholder">
+      <div class="gallery-icon">
+       🖌️
+      </div>
+      <div class="gallery-label">
+       Texture Painting
+      </div>
+     </div>
+     <div class="gallery-overlay">
+      <h3 class="overlay-title">Textured Wall Finish</h3>
+      <p class="overlay-category">Painting</p>
+     </div>
+    </div>
+   </div><!-- Before/After Comparison -->
+   <div class="comparison-section">
+    <div class="comparison-header">
+     <h2 class="comparison-title" id="comparison-title">Before &amp; After Transformation</h2>
+     <p class="comparison-subtitle" id="comparison-subtitle">See the amazing transformations we've achieved for our clients</p>
+    </div>
+    <div class="comparison-slider">
+     <div class="comparison-side before-side">
+      <div class="comparison-icon">
+       📷
+      </div>
+      <div>
+       BEFORE
+      </div>
+     </div>
+     <div class="comparison-side after-side">
+      <div class="comparison-icon">
+       ✨
+      </div>
+      <div>
+       AFTER
+      </div>
+     </div>
+     <div class="slider-handle">
+      ⬌
+     </div>
+    </div>
+    <div class="slider-instruction">
+     Drag the slider to compare before and after
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="footer">
+   <div class="footer-content">
+    <h2 class="footer-title" id="footer-title">Let's Build Your Dream Together</h2>
+    <div class="footer-contacts">
+     <div class="contact-card">
+      <div class="contact-icon">
+       📞
+      </div>
+      <p class="contact-label">Primary Contact</p><a href="tel:9653194467" class="contact-value" id="footer-phone-1">9653194467</a>
+     </div>
+     <div class="contact-card">
+      <div class="contact-icon">
+       📱
+      </div>
+      <p class="contact-label">Alternative Number</p><a href="tel:7045053784" class="contact-value" id="footer-phone-2">7045053784</a>
+     </div>
+     <div class="contact-card">
+      <div class="contact-icon">
+       ✉️
+      </div>
+      <p class="contact-label">Email Address</p><a href="mailto:info@yadneshenterprises.com" class="contact-value" id="footer-email">info@yadneshenterprises.com</a>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>© 2024 Yadnesh Enterprises. All Rights Reserved. | Crafting Excellence Since 2010</p>
+    </div>
+   </div>
+  </footer>
+  <script>
+        const defaultConfig = {
+            background_color: "#0A2342",
+            surface_color: "#ffffff",
+            text_color: "#333333",
+            primary_action_color: "#FF5722",
+            secondary_action_color: "#FF7043",
+            page_title: "Our Recent Projects",
+            page_subtitle: "Explore our portfolio of exceptional projects showcasing quality craftsmanship and stunning designs",
+            tab_1: "All Projects",
+            tab_2: "Kitchen",
+            tab_3: "Interior",
+            tab_4: "Ceiling",
+            tab_5: "Construction",
+            tab_6: "Painting",
+            comparison_title: "Before & After Transformation",
+            comparison_subtitle: "See the amazing transformations we've achieved for our clients",
+            footer_title: "Let's Build Your Dream Together",
+            footer_phone_1: "9653194467",
+            footer_phone_2: "7045053784",
+            footer_email: "info@yadneshenterprises.com",
+            font_family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            font_size: 16
+        };
+
+        let config = { ...defaultConfig };
+
+        async function onConfigChange(newConfig) {
+            const customFont = newConfig.font_family || defaultConfig.font_family;
+            const baseFontStack = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            const fontFamily = `${customFont}, ${baseFontStack}`;
+            const baseSize = newConfig.font_size || defaultConfig.font_size;
+
+            document.body.style.fontFamily = fontFamily;
+
+            // Apply font sizes
+            document.querySelector('.page-title').style.fontSize = `${baseSize * 3.25}px`;
+            document.querySelector('.page-subtitle').style.fontSize = `${baseSize * 1.25}px`;
+            document.querySelectorAll('.tab-button').forEach(el => el.style.fontSize = `${baseSize}px`);
+            document.querySelectorAll('.gallery-label').forEach(el => el.style.fontSize = `${baseSize * 1.125}px`);
+            document.querySelectorAll('.overlay-title').forEach(el => el.style.fontSize = `${baseSize * 1.125}px`);
+            document.querySelectorAll('.overlay-category').forEach(el => el.style.fontSize = `${baseSize * 0.875}px`);
+            document.querySelector('.comparison-title').style.fontSize = `${baseSize * 2.625}px`;
+            document.querySelector('.comparison-subtitle').style.fontSize = `${baseSize * 1.125}px`;
+            document.querySelector('.footer-title').style.fontSize = `${baseSize * 2.25}px`;
+            document.querySelectorAll('.contact-label').forEach(el => el.style.fontSize = `${baseSize * 0.875}px`);
+            document.querySelectorAll('.contact-value').forEach(el => el.style.fontSize = `${baseSize * 1.25}px`);
+
+            // Apply colors
+            const bgColor = newConfig.background_color || defaultConfig.background_color;
+            const surfaceColor = newConfig.surface_color || defaultConfig.surface_color;
+            const textColor = newConfig.text_color || defaultConfig.text_color;
+            const primaryColor = newConfig.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryColor = newConfig.secondary_action_color || defaultConfig.secondary_action_color;
+
+            document.body.style.color = textColor;
+            document.querySelector('.header').style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            document.querySelector('.footer').style.background = `linear-gradient(135deg, ${bgColor} 0%, #1a4170 100%)`;
+            document.querySelector('.tabs-container').style.background = surfaceColor;
+            document.querySelectorAll('.tab-button').forEach(el => {
+                el.style.background = surfaceColor;
+                el.style.color = textColor;
+            });
+            document.querySelector('.tab-button.active').style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+            document.querySelectorAll('.comparison-section').forEach(el => el.style.background = surfaceColor);
+            document.querySelector('.comparison-title').style.color = bgColor;
+            document.querySelector('.comparison-subtitle').style.color = textColor;
+            document.querySelectorAll('.overlay-category').forEach(el => el.style.color = primaryColor);
+            document.querySelectorAll('.contact-value').forEach(el => el.style.color = primaryColor);
+
+            // Update text content
+            document.getElementById('page-title').textContent = newConfig.page_title || defaultConfig.page_title;
+            document.getElementById('page-subtitle').textContent = newConfig.page_subtitle || defaultConfig.page_subtitle;
+            document.getElementById('tab-1').textContent = newConfig.tab_1 || defaultConfig.tab_1;
+            document.getElementById('tab-2').textContent = newConfig.tab_2 || defaultConfig.tab_2;
+            document.getElementById('tab-3').textContent = newConfig.tab_3 || defaultConfig.tab_3;
+            document.getElementById('tab-4').textContent = newConfig.tab_4 || defaultConfig.tab_4;
+            document.getElementById('tab-5').textContent = newConfig.tab_5 || defaultConfig.tab_5;
+            document.getElementById('tab-6').textContent = newConfig.tab_6 || defaultConfig.tab_6;
+            document.getElementById('comparison-title').textContent = newConfig.comparison_title || defaultConfig.comparison_title;
+            document.getElementById('comparison-subtitle').textContent = newConfig.comparison_subtitle || defaultConfig.comparison_subtitle;
+            document.getElementById('footer-title').textContent = newConfig.footer_title || defaultConfig.footer_title;
+            document.getElementById('footer-phone-1').textContent = newConfig.footer_phone_1 || defaultConfig.footer_phone_1;
+            document.getElementById('footer-phone-1').href = `tel:${newConfig.footer_phone_1 || defaultConfig.footer_phone_1}`;
+            document.getElementById('footer-phone-2').textContent = newConfig.footer_phone_2 || defaultConfig.footer_phone_2;
+            document.getElementById('footer-phone-2').href = `tel:${newConfig.footer_phone_2 || defaultConfig.footer_phone_2}`;
+            document.getElementById('footer-email').textContent = newConfig.footer_email || defaultConfig.footer_email;
+            document.getElementById('footer-email').href = `mailto:${newConfig.footer_email || defaultConfig.footer_email}`;
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["page_title", config.page_title || defaultConfig.page_title],
+                    ["page_subtitle", config.page_subtitle || defaultConfig.page_subtitle],
+                    ["tab_1", config.tab_1 || defaultConfig.tab_1],
+                    ["tab_2", config.tab_2 || defaultConfig.tab_2],
+                    ["tab_3", config.tab_3 || defaultConfig.tab_3],
+                    ["tab_4", config.tab_4 || defaultConfig.tab_4],
+                    ["tab_5", config.tab_5 || defaultConfig.tab_5],
+                    ["tab_6", config.tab_6 || defaultConfig.tab_6],
+                    ["comparison_title", config.comparison_title || defaultConfig.comparison_title],
+                    ["comparison_subtitle", config.comparison_subtitle || defaultConfig.comparison_subtitle],
+                    ["footer_title", config.footer_title || defaultConfig.footer_title],
+                    ["footer_phone_1", config.footer_phone_1 || defaultConfig.footer_phone_1],
+                    ["footer_phone_2", config.footer_phone_2 || defaultConfig.footer_phone_2],
+                    ["footer_email", config.footer_email || defaultConfig.footer_email]
+                ])
+            });
+        }
+
+        onConfigChange(defaultConfig);
+
+        // Gallery Filtering
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            // Update active button
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // Before/After Slider
+        let isDragging = false;
+        const slider = document.querySelector('.comparison-slider');
+        const handle = document.querySelector('.slider-handle');
+        const beforeSide = document.querySelector('.before-side');
+
+        handle.addEventListener('mousedown', () => isDragging = true);
+        handle.addEventListener('touchstart', () => isDragging = true);
+
+        document.addEventListener('mouseup', () => isDragging = false);
+        document.addEventListener('touchend', () => isDragging = false);
+
+        document.addEventListener('mousemove', handleSliderMove);
+        document.addEventListener('touchmove', handleSliderMove);
+
+        function handleSliderMove(e) {
+            if (!isDragging) return;
+            
+            const rect = slider.getBoundingClientRect();
+            const x = (e.type.includes('touch') ? e.touches[0].clientX : e.clientX) - rect.left;
+            const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            
+            beforeSide.style.width = `${percentage}%`;
+            handle.style.left = `${percentage}%`;
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0da17a07408ee8',t:'MTc2MzUzMzUzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
